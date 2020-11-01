@@ -17,5 +17,18 @@ A Microservice in NodeJS, TypeScript, Express, and Oracle
 
     "oracledb": "^1.13.1",
 
+    
+    "singleQuote": true,
+
+
+    npm install --save-dev husky
+    {
+        "husky": {
+            "hooks": {
+            "pre-commit": "yarn lint"
+            }
+        }
+    }
+
 
 ```

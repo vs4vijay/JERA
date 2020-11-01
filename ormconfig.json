@@ -1,24 +1,18 @@
 {
-   "type": "oracle",
-   "host": "localhost",
-   "username": "system",
-   "password": "oracle",
-   "port": 1521,
-   "sid": "xe.oracle.docker",
-   "synchronize": true,
-   "logging": false,
-   "entities": [
-      "src/models/**/*.ts"
-   ],
-   "migrations": [
-      "src/migrations/**/*.ts"
-   ],
-   "subscribers": [
-      "src/subscribers/**/*.ts"
-   ],
-   "cli": {
-      "entitiesDir": "src/models",
-      "migrationsDir": "src/migrations",
-      "subscribersDir": "src/subscribers"
-   }
+  "type": "oracle",
+  "host": "localhost",
+  "username": "system",
+  "password": "oracle",
+  "port": 1521,
+  "sid": "xe.oracle.docker",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["src/models/**/*.ts"],
+  "migrations": ["src/migrations/**/*.ts"],
+  "subscribers": ["src/subscribers/**/*.ts"],
+  "cli": {
+    "entitiesDir": "src/models",
+    "migrationsDir": "src/migrations",
+    "subscribersDir": "src/subscribers"
+  }
 }

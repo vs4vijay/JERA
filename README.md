@@ -5,8 +5,9 @@ A Microservice in NodeJS, TypeScript, Express, and Oracle
 ---
 
 ## Libraries Used
-- ESLint - 
-- Prettier - For Formatting
+
+- ESLint -
+- Prettier - For Formatting (https://eslint.org/docs/user-guide/getting-started)
 
 ---
 

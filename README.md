@@ -8,6 +8,7 @@ A Microservice in NodeJS, TypeScript, Express, and Oracle
 
 - ESLint -
 - Prettier - For Formatting (https://eslint.org/docs/user-guide/getting-started)
+- Husky - https://github.com/typicode/husky
 
 ---
 
@@ -29,6 +30,11 @@ A Microservice in NodeJS, TypeScript, Express, and Oracle
             }
         }
     }
+
+    https://github.com/okonet/lint-staged
+    https://github.com/azz/pretty-quick
+
+    https://sourcelevel.io/blog/how-to-setup-eslint-and-prettier-on-node
 
 
 ```

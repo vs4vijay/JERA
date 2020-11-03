@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  oracle:
+    image: absolutapps/oracle-12c-ee
+    ports:
+      - '1521:1521'
+      - '5500:5500'
+    container_name: oracle
+
+networks:
+  dev:

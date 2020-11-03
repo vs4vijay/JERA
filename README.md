@@ -18,10 +18,26 @@ npm run dev
 
 ## Libraries Used
 
+- typeorm
 - dotenv
 - ESLint -
 - Prettier - For Formatting (https://eslint.org/docs/user-guide/getting-started)
 - Husky - https://github.com/typicode/husky
+
+---
+
+## Development
+
+- Create an entity: `npx typeorm entity:create -n User`
+- Generate migration: `npm run typeorm -- migration:generate -n CreateUser`
+- Run the migrations: `npm run typeorm -- migration:run`
+
+Notes:
+- Migration name pattern: Add<field>To<Entity>
+  - AddLastNameToUser
+  - UpdateEmailToEmployee
+
+
 
 ---
 

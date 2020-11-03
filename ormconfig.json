@@ -4,7 +4,7 @@
   "username": "system",
   "password": "oracle",
   "port": 1521,
-  "sid": "xe.oracle.docker",
+  "sid": "orcl",
   "synchronize": true,
   "logging": false,
   "entities": ["src/api/models/**/*.ts"],

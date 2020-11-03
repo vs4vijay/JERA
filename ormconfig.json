@@ -7,12 +7,12 @@
   "sid": "xe.oracle.docker",
   "synchronize": true,
   "logging": false,
-  "entities": ["src/models/**/*.ts"],
-  "migrations": ["src/migrations/**/*.ts"],
-  "subscribers": ["src/subscribers/**/*.ts"],
+  "entities": ["src/api/models/**/*.ts"],
+  "migrations": ["src/api/migrations/**/*.ts"],
+  "subscribers": ["src/api/subscribers/**/*.ts"],
   "cli": {
-    "entitiesDir": "src/models",
-    "migrationsDir": "src/migrations",
-    "subscribersDir": "src/subscribers"
+    "entitiesDir": "src/api/models",
+    "migrationsDir": "src/api/migrations",
+    "subscribersDir": "src/api/subscribers"
   }
 }

@@ -3,5 +3,8 @@
   "useTabs": false,
   "tabWidth": 2,
   "printWidth": 120,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "singleQuote": true,
+  "eslintIntegration": true,
+  "endOfLine": "auto"
 }

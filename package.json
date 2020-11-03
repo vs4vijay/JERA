@@ -5,9 +5,12 @@
   "main": "src/api/app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node src/api/app.ts",
+    "lint": "eslint . --ext .ts",
     "dev": "ts-node-dev src/api/app.ts",
-    "lint": "eslint . --ext .ts"
+    "clean": "echo 'hi'",
+    "build": "tsc --project ./tsconfig.json",
+    "start": "npm run clean && npm run build && node build/app.js",
+    "start:ts": "ts-node src/api/app.ts"
   },
   "repository": {
     "type": "git",

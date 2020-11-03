@@ -1,7 +1,7 @@
 {
   "name": "jera",
   "version": "1.0.0",
-  "description": "A Microservice in NodeJS, Loopback 4",
+  "description": "A Microservice in NodeJS, TypeScript, Express, and Oracle",
   "main": "src/api/app.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

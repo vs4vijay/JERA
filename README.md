@@ -4,6 +4,16 @@ A Microservice in NodeJS, TypeScript, Express, and Oracle
 
 ---
 
+## Installation
+
+```shell
+npm install
+```
+
+- Create `.env` file from `.env.example` and populate environment variables
+
+---
+
 ## Running
 
 ```shell
@@ -72,6 +82,12 @@ Notes:
     https://sourcelevel.io/blog/how-to-setup-eslint-and-prettier-on-node
 
     https://github.com/albinojunior/node-crudapi-ts/blob/master/src/app.ts
+    
+
+    class Config {
+    NODE_ENV: string;
+    DB: JSON;
+    }
 
 
 ```

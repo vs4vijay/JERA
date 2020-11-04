@@ -54,6 +54,7 @@ Notes:
     "oracledb": "^1.13.1",
 
     
+    Controller -> Service -> Repository -> Model -> DB
 
 
     npm install --save-dev husky

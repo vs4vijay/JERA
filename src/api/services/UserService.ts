@@ -12,7 +12,11 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  public async save(user: User): Promise<User> {
+  public async getById(id: number): Promise<User> {
+    return this.userRepository.findOne(id);
+  }
+
+  public async create(user: User): Promise<User> {
     return this.userRepository.save(user);
   }
 }

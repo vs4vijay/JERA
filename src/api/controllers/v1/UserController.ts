@@ -1,4 +1,4 @@
-import { JsonController, Get, Post, Body } from 'routing-controllers';
+import { JsonController, Get, Post, Body, Param } from 'routing-controllers';
 import { UserDTO } from '../../dtos';
 
 import { User } from '../../models';
@@ -13,13 +13,18 @@ export class UserController {
     return this.userService.getAll();
   }
 
+  @Get('/:id')
+  get(@Param('id') id: number): Promise<User> {
+    return this.userService.getById(id);
+  }
+
   @Post()
-  save(@Body({ required: true }) userDTO: UserDTO): Promise<User> {
+  create(@Body({ required: true }) userDTO: UserDTO): Promise<User> {
     // TODO: Validations
     const user = new User();
     user.firstName = userDTO.firstName;
     user.lastName = userDTO.lastName;
     user.email = userDTO.email;
-    return this.userService.save(user);
+    return this.userService.create(user);
   }
 }

@@ -1,11 +1,17 @@
 import 'reflect-metadata';
-import { createExpressServer } from 'routing-controllers';
+import { createExpressServer, useContainer as useRoutingContainer } from 'routing-controllers';
+import { useContainer as useORMContainer } from 'typeorm';
+import { Container } from 'typedi';
 
-import { HealthCheckController } from './controllers/v1';
+import { HealthCheckController, UserController } from './controllers/v1';
 import startConnection from './db';
 
+// Use TypeDI Container for TypeORM and Routing DI
+useORMContainer(Container);
+useRoutingContainer(Container);
+
 const app = createExpressServer({
-  controllers: [HealthCheckController],
+  controllers: [HealthCheckController, UserController],
 });
 
 startConnection()

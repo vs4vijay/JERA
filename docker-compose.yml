@@ -6,6 +6,7 @@ services:
     ports:
       - '1521:1521'
       - '5500:5500'
+      - '8080:8080'
     container_name: oracle
 
 networks:

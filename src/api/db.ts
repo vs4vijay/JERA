@@ -1,4 +1,5 @@
 import { createConnection, Connection } from 'typeorm';
+import { User } from './models';
 
 // TODO: Make it properly structured
 async function startConnection(): Promise<Connection> {
@@ -9,7 +10,8 @@ async function startConnection(): Promise<Connection> {
     username: 'system',
     password: 'oracle',
     sid: 'orcl',
-    entities: ['./models/*.ts'],
+    // entities: [__dirname + '\\src\\models\\*.ts'],
+    entities: [User],
     logging: true,
   });
 

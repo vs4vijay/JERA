@@ -1,7 +1,7 @@
-import { JsonController, Get, Post, Body, Param, Put, Delete } from 'routing-controllers';
+import { JsonController, Param, Get, Post, Body, Put, Delete } from 'routing-controllers';
 import { DeleteResult, UpdateResult } from 'typeorm';
-import { UserDTO } from '../../dtos';
 
+import { UserDTO } from '../../dtos';
 import { User } from '../../models';
 import { UserService } from '../../services';
 
@@ -32,7 +32,7 @@ export class UserController {
 
   @Put('/:id')
   update(@Param('id') id: number, @Body({ required: true }) userDTO: UserDTO): Promise<UpdateResult> {
-    // TODO: Validations
+    // TODO: Validations and DTO to Model conversion
     const user = new User();
     user.firstName = userDTO.firstName;
     user.lastName = userDTO.lastName;

@@ -4,7 +4,6 @@ import { useExpressServer, useContainer as useRoutingContainer } from 'routing-c
 import { Connection, useContainer as useORMContainer } from 'typeorm';
 import { Container } from 'typedi';
 
-import { HealthCheckController, UserController } from './controllers/v1';
 import getConnection from './db';
 import config from './config';
 
@@ -26,7 +25,7 @@ class App {
 
     // TODO: Add middlewares, etc
     useExpressServer(this.app, {
-      controllers: [HealthCheckController, UserController],
+      controllers: [__dirname + '/controllers/**/*.{ts,js}'],
     });
 
     try {

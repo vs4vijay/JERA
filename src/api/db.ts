@@ -1,7 +1,5 @@
 import { createConnection, Connection } from 'typeorm';
 
-import { User } from './models';
-
 // TODO: Make it properly structured
 async function getConnection(config: Record<string, any>): Promise<Connection> {
   const connection: Connection = await createConnection({
@@ -12,8 +10,7 @@ async function getConnection(config: Record<string, any>): Promise<Connection> {
     password: config.db.password,
     database: config.db.database, // TODO: Comment this and uncomment next line when using Oracle
     // sid: config.db.database,
-    // entities: [__dirname + '\\src\\models\\*.ts'],
-    entities: [User],
+    entities: [__dirname + '/models/*.{ts,js}'],
     logging: config.db.logging,
     synchronize: config.db.synchronize,
   });

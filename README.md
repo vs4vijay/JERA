@@ -185,4 +185,9 @@ currentUserChecker: async (action: Action) => {...}
 
 import { createParamDecorator } from "routing-controllers";
 
+
+process.on('SIGINT', () => { 
+  // Gracefully 
+}
+
 ```

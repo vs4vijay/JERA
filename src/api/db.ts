@@ -11,10 +11,12 @@ async function startConnection(): Promise<Connection> {
     port: config.db.port,
     username: config.db.username,
     password: config.db.password,
-    sid: config.db.database,
+    database: config.db.database, // TODO: Comment this and uncomment next line when using Oracle
+    // sid: config.db.database,
     // entities: [__dirname + '\\src\\models\\*.ts'],
     entities: [User],
     logging: true,
+    synchronize: true, // TODO: Comment this once stable
   });
 
   return connection;

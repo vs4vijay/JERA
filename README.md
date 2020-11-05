@@ -69,7 +69,14 @@ Notes:
 
 ```javascript
 
+curl -s localhost:9000/api/v1/users | jq
+
+curl -s -H 'Content-Type:application/json' localhost:9000/api/v1/users -d '{"firstName": "f1", "lastName": "l1", "email": "e1"}' | jq
+
+
 "oracledb": "^1.13.1",
+
+config: any to some type?
 
 
 Controller -> Service -> Repository -> Model -> DB

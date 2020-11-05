@@ -1,23 +1,49 @@
 import 'reflect-metadata';
-import { createExpressServer, useContainer as useRoutingContainer } from 'routing-controllers';
-import { useContainer as useORMContainer } from 'typeorm';
+import * as express from 'express';
+import { useExpressServer, useContainer as useRoutingContainer } from 'routing-controllers';
+import { Connection, useContainer as useORMContainer } from 'typeorm';
 import { Container } from 'typedi';
 
 import { HealthCheckController, UserController } from './controllers/v1';
-import startConnection from './db';
+import getConnection from './db';
+import config from './config';
 
-// Use TypeDI Container for TypeORM and Routing DI
-useORMContainer(Container);
-useRoutingContainer(Container);
+class App {
+  public app: express.Application;
+  public config: Record<string, any>;
+  public connection: Connection;
 
-const app = createExpressServer({
-  controllers: [HealthCheckController, UserController],
-});
+  constructor(config: Record<string, any>) {
+    this.app = express();
+    this.config = config;
+    this.init();
+  }
 
-startConnection()
-  .then(() => {
-    app.listen(9000, () => {
-      console.log('API Server is running');
+  private async init() {
+    // Use TypeDI Container for TypeORM and Routing DI
+    useORMContainer(Container);
+    useRoutingContainer(Container);
+
+    // TODO: Add middlewares, etc
+    useExpressServer(this.app, {
+      controllers: [HealthCheckController, UserController],
     });
-  })
-  .catch(console.error);
+
+    try {
+      this.connection = await getConnection(config);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  public start() {
+    this.app.listen(this.config['app']['port'], () => {
+      console.log(`API Server is running: http://localhost:${this.config['app']['port']}`);
+    });
+  }
+}
+
+const app = new App(config);
+app.start();
+
+export default app;

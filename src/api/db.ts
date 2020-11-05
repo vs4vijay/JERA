@@ -1,10 +1,9 @@
 import { createConnection, Connection } from 'typeorm';
 
-import config from './config';
 import { User } from './models';
 
 // TODO: Make it properly structured
-async function startConnection(): Promise<Connection> {
+async function getConnection(config: Record<string, any>): Promise<Connection> {
   const connection: Connection = await createConnection({
     type: config.db.type as never,
     host: config.db.host,
@@ -22,4 +21,4 @@ async function startConnection(): Promise<Connection> {
   return connection;
 }
 
-export default startConnection;
+export default getConnection;

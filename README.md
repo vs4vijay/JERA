@@ -26,6 +26,27 @@ npm run dev
 
 ---
 
+## Features
+
+- [x] TypeScript
+- [x] Depedency Injection of Services, Repositories, Controllers
+- Modular App.ts
+- Properly structured codebase models, repositories, services, controllers, migrations etc.
+- ORM Migrations used for maintaining database schemas
+- Follows pure REST APIs
+- Input validations
+- Use of `.env` file
+- Git pre-commit hooks setup
+- Linting and Standard Formatting
+- [ ] Structured Logging
+? Unit Testing
+? Authentication
+? Error Handling and Generic Error Middleware
+? Search Framework
+- Containerized with Docker
+
+---
+
 ## Libraries Used
 
 - NodeJS with TypeScript

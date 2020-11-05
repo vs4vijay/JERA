@@ -14,8 +14,8 @@ async function getConnection(config: Record<string, any>): Promise<Connection> {
     // sid: config.db.database,
     // entities: [__dirname + '\\src\\models\\*.ts'],
     entities: [User],
-    logging: true,
-    synchronize: true, // TODO: Comment this once stable
+    logging: config.db.logging,
+    synchronize: config.db.synchronize,
   });
 
   return connection;

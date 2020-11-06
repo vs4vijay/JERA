@@ -95,6 +95,11 @@ curl -s localhost:9000/api/v1/users | jq
 
 curl -s -H 'Content-Type:application/json' localhost:9000/api/v1/users -d '{"firstName": "f1", "lastName": "l1", "email": "e1"}' | jq
 
+  private initMiddlewares(): void {
+    this.app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({ extended: false }));
+  }
+
 
 "oracledb": "^1.13.1",
 

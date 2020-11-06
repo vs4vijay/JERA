@@ -2,11 +2,11 @@
   "name": "jera",
   "version": "1.0.0",
   "description": "A Microservice in NodeJS, TypeScript, Express, and Oracle",
-  "main": "src/api/app.ts",
+  "main": "src/app.ts",
   "scripts": {
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js -f src/api/db.ts",
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js -f src/db.ts",
     "debug": "npm run clean && npm run build && node --inspect-brk dist/app.js",
     "test": "tsc --version && tsc --pretty && jest",
     "test:watch": "tsc --version && tsc --pretty && jest --watch",
@@ -14,8 +14,8 @@
     "clean": "rimraf dist/",
     "build": "tsc --project ./tsconfig.json",
     "start": "npm run clean && npm run build && node dist/app.js",
-    "start:dev": "ts-node-dev src/api/app.ts",
-    "start:ts": "ts-node src/api/app.ts"
+    "start:dev": "ts-node-dev src/app.ts",
+    "start:ts": "ts-node src/app.ts"
   },
   "husky": {
     "hooks": {

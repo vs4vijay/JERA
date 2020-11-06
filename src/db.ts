@@ -14,8 +14,8 @@ export default {
   migrations: [`${__dirname}/migrations/*.{ts,js}`],
   subscribers: [`${__dirname}/subscribers/*.{ts,js}`],
   cli: {
-    entitiesDir: 'src/api/models',
-    migrationsDir: 'src/api/migrations',
-    subscribersDir: 'src/api/subscribers',
+    entitiesDir: 'src/models',
+    migrationsDir: 'src/migrations',
+    subscribersDir: 'src/subscribers',
   },
 };

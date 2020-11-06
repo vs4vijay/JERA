@@ -14,8 +14,8 @@ export const config = {
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_DATABASE,
-    logging: process.env.DB_LOGGING == 'true' ? true : false,
-    synchronize: process.env.DB_SYNCHRONIZE == 'true' ? true : false,
+    logging: process.env.DB_LOGGING == 'true',
+    synchronize: process.env.DB_SYNCHRONIZE == 'true',
   },
 };
 

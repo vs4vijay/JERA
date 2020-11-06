@@ -70,7 +70,7 @@ npm run dev
 
 ## Development
 
-- Create an entity: `npx typeorm entity:create -n User`
+- Create an entity: `npm run typeorm -- entity:create -n User`
 - Generate migration: `npm run typeorm -- migration:generate -n CreateUser`
 - Run the migrations: `npm run typeorm -- migration:run`
 
@@ -130,8 +130,10 @@ apt-get install -y libaio1
 sudo sh -c "echo /opt/oracle/instantclient_19_9 > /etc/ld.so.conf.d/oracle-instantclient.conf"
 sudo ldconfig
 
-export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_9:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_9
 
+
+node --require ts-node/register ./node_modules/typeorm/cli.js
 
 BaseController / AbstractController
 

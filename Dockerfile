@@ -17,7 +17,6 @@ RUN npm ci --quiet
 
 # Copy source code
 COPY tsconfig.json ./
-COPY ormconfig.json ./
 COPY src /app/src
 
 # Build

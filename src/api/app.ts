@@ -1,10 +1,10 @@
 import 'reflect-metadata';
 import * as express from 'express';
 import { useExpressServer, useContainer as useRoutingContainer } from 'routing-controllers';
-import { Connection, useContainer as useORMContainer } from 'typeorm';
+import { createConnection, Connection, useContainer as useORMContainer } from 'typeorm';
 import { Container } from 'typedi';
 
-import getConnection from './db';
+import dbConfig from './db';
 import config from './config';
 
 class App {
@@ -29,7 +29,7 @@ class App {
     });
 
     try {
-      this.connection = await getConnection(config);
+      this.connection = await createConnection(dbConfig);
     } catch (error) {
       console.error(error);
     }

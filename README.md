@@ -30,20 +30,21 @@ npm run dev
 
 - [x] TypeScript
 - [x] Depedency Injection of Services, Repositories, Controllers
-- Modular App.ts
-- Properly structured codebase models, repositories, services, controllers, migrations etc.
-- ORM Migrations used for maintaining database schemas
-- Follows pure REST APIs
-- Input validations
-- Use of `.env` file
-- Git pre-commit hooks setup
-- Linting and Standard Formatting
+- [x] Modular App.ts
+- [x] Properly structured codebase models, repositories, services, controllers, migrations etc.
+- [x] ORM Migrations used for maintaining database schemas
+- [x] Follows pure REST APIs
+- [ ] Input validations
+- [x] Use of `.env` file
+- [x] Git pre-commit hooks setup
+- [x] Linting and Standard Formatting
 - [ ] Structured Logging
-? Unit Testing
-? Authentication
-? Error Handling and Generic Error Middleware
-? Search Framework
-- Containerized with Docker
+- [ ] Unit Testing
+- [ ] Authentication
+- [ ] Error Handling and Generic Error Middleware
+- [ ] Search Framework
+- [ ] AbstractService or interface Service
+- [x] Containerized with Docker
 
 ---
 
@@ -126,8 +127,10 @@ unzip instantclient-basic-linuxx64.zip
 
 apt-get install -y libaio1
 
-sudo sh -c "echo /opt/oracle/instantclient_19_6 > /etc/ld.so.conf.d/oracle-instantclient.conf"
+sudo sh -c "echo /opt/oracle/instantclient_19_9 > /etc/ld.so.conf.d/oracle-instantclient.conf"
 sudo ldconfig
+
+export LD_LIBRARY_PATH=/opt/oracle/instantclient_19_9:$LD_LIBRARY_PATH
 
 
 BaseController / AbstractController

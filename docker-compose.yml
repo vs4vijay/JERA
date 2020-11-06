@@ -8,6 +8,11 @@ services:
       - '5500:5500'
       - '8080:8080'
     container_name: oracle
+    volumes:
+      - db-data:/u01/app/oracle/oradata
+
+volumes:
+  db-data:
 
 networks:
   dev:

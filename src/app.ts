@@ -25,7 +25,7 @@ class App {
 
     // TODO: Add middlewares, etc
     useExpressServer(this.app, {
-      controllers: [__dirname + '/controllers/**/*.{ts,js}'],
+      controllers: [`${__dirname}/controllers/**/*.{ts,js}`],
     });
 
     try {

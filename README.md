@@ -38,6 +38,7 @@ npm run dev
 - [x] Use of `.env` file
 - [x] Git pre-commit hooks setup
 - [x] Linting and Standard Formatting
+- [ ] Soft Delete Options
 - [ ] Structured Logging
 - [ ] Unit Testing
 - [ ] Authentication
@@ -60,9 +61,9 @@ npm run dev
 - class-transformer - For transforming objects (https://github.com/typestack/class-transformer)
 - dotenv - Use Environment Variables from .env file
 - ESLint - For Linting the ES and TypeScript codebase
-  - ext install dbaeumer.vscode-eslint
+  - `ext install dbaeumer.vscode-eslint`
 - Prettier - For Formatting Standard (https://eslint.org/docs/user-guide/getting-started)
-  - ext install esbenp.prettier-vscode
+  - `ext install esbenp.prettier-vscode`
 - Husky - https://github.com/typicode/husky
 - lint-staged - https://github.com/okonet/lint-staged
 

@@ -1,5 +1,18 @@
+import { IsBoolean, IsOptional, IsString } from 'class-validator';
+import { User } from '../models';
+
 export class UserDTO {
-  firstName: string;
-  lastName: string;
-  email: string;
+  @IsString()
+  name: string;
+
+  @IsBoolean()
+  @IsOptional()
+  isActive: boolean;
+
+  toModel(): User {
+    const user = new User();
+    user.name = this.name;
+    user.isActive = this.isActive;
+    return user;
+  }
 }

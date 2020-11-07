@@ -13,7 +13,7 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  public async getById(id: number): Promise<User> {
+  public async getById(id: string): Promise<User> {
     return this.userRepository.findOne(id);
   }
 
@@ -21,12 +21,12 @@ export class UserService {
     return this.userRepository.save(user);
   }
 
-  public async update(id: number, user: User): Promise<UpdateResult> {
+  public async update(id: string, user: User): Promise<UpdateResult> {
     // TODO: Send updated entity
     return this.userRepository.update(id, user);
   }
 
-  public async delete(id: number): Promise<DeleteResult> {
+  public async delete(id: string): Promise<DeleteResult> {
     return this.userRepository.delete({ id });
   }
 }

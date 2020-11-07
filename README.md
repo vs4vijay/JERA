@@ -38,7 +38,12 @@ npm run dev
 - [x] Use of `.env` file
 - [x] Git pre-commit hooks setup
 - [x] Linting and Standard Formatting
+- [x] Added system metadata like createdAt, updatedAt
+- [ ] Added audit log like createdBy, updatedBy
+- [x] isActive
+- [x] uuid as primary key
 - [ ] Soft Delete Options
+- [ ] Pagination
 - [ ] Structured Logging
 - [ ] Unit Testing
 - [ ] Authentication
@@ -94,7 +99,11 @@ Notes:
 
 curl -s localhost:9000/api/v1/users | jq
 
-curl -s -H 'Content-Type:application/json' localhost:9000/api/v1/users -d '{"firstName": "f1", "lastName": "l1", "email": "e1"}' | jq
+curl -s -H 'Content-Type:application/json' localhost:9000/api/v1/users -d '{"name": "1111"}' | jq
+
+curl -s -H 'Content-Type:application/json' -X PUT localhost:9000/api/v1/users/a14040c8-4016-401b-98db-37619ae5a6fc -d '{"name": "222 - updated"}' | jq
+
+curl -s localhost:9000/api/v1/users/7f5e8690-6be0-42ba-91a3-126e49723bc1 -X DELETE
 
   private initMiddlewares(): void {
     this.app.use(bodyParser.json());
@@ -108,6 +117,18 @@ config: any to some type?
 
 
 Controller -> Service -> Repository -> Model -> DB
+
+
+TypeORM:
+- `save` method does both creation and updation
+
+@OneToMany(type => SubCategory, subcategoy => subcategoy.Category)
+SubCategories: SubCategory[];
+
+@ManyToOne(type => Category, category => category.SubCategories)
+@JoinColumn({name: "CategoryId"})
+Category: Category;
+
 
 
 npm install --save-dev husky

@@ -50,7 +50,7 @@
   "homepage": "https://github.com/vs4vijay/JERA#readme",
   "dependencies": {
     "body-parser": "^1.18.1",
-    "class-transformer": "^0.2.3",
+    "class-transformer": "^0.3.0",
     "class-validator": "0.13.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

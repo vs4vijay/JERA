@@ -1,3 +1,3 @@
 export class HealthCheckDTO {
-  public healthCheck: boolean;
+  public status: any;
 }

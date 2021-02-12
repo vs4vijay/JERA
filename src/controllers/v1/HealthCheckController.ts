@@ -6,6 +6,7 @@ import { HealthCheckDTO } from '../../dtos';
 export class HealthCheckController {
   @Get()
   healthCheck(): HealthCheckDTO {
-    return { healthCheck: true };
+    // TODO: Implement proper healthcheck
+    return { status: 'healthy' };
   }
 }

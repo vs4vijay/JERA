@@ -16,6 +16,7 @@ export const config = {
     database: process.env.DB_DATABASE,
     logging: process.env.DB_LOGGING === 'true',
     synchronize: process.env.DB_SYNCHRONIZE === 'true',
+    migrationsRun: process.env.DB_MIGRATIONS_RUN === 'true',
   },
 };
 

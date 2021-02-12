@@ -9,6 +9,7 @@ export default {
   database: config.db.database, // TODO: Comment this and uncomment next line when using Oracle
   // sid: config.db.database,
   logging: config.db.logging,
+  migrationsRun: config.db.migrationsRun,
   synchronize: config.db.synchronize,
   entities: [`${__dirname}/models/*.{ts,js}`],
   migrations: [`${__dirname}/migrations/*.{ts,js}`],

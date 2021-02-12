@@ -2,6 +2,8 @@
 
 A Microservice in NodeJS, TypeScript, Express, and Oracle
 
+Express + Routing-Controllers + TypeScript + TypeORM + TypeDI
+
 ---
 
 ## Installation
@@ -34,22 +36,25 @@ npm run dev
 - [x] Properly structured codebase models, repositories, services, controllers, migrations etc.
 - [x] ORM Migrations used for maintaining database schemas
 - [x] Follows pure REST APIs
-- [ ] Input validations
+- [x] Input validations
 - [x] Use of `.env` file
 - [x] Git pre-commit hooks setup
 - [x] Linting and Standard Formatting
 - [x] Added system metadata like createdAt, updatedAt
-- [ ] Added audit log like createdBy, updatedBy
+- [x] Use of DTOs
+- [x] Added audit log like createdBy, updatedBy
 - [x] isActive
 - [x] uuid as primary key
-- [ ] Soft Delete Options
-- [ ] Pagination
+- [x] Soft Delete Options
+- [x] Pagination
 - [ ] Structured Logging
 - [ ] Unit Testing
 - [ ] Authentication
+- [ ] Authorization
 - [ ] Error Handling and Generic Error Middleware
 - [ ] Search Framework
 - [ ] AbstractService or interface Service
+- [ ] Graceful Shutdown
 - [x] Containerized with Docker
 
 ---
@@ -81,6 +86,7 @@ npm run dev
 - Run the migrations: `npm run typeorm -- migration:run`
 
 Notes:
+
 - Migration name pattern: Add<field>To<Entity>
   - AddLastNameToUser
   - UpdateEmailToEmployee
@@ -185,9 +191,9 @@ useExpressServer(app, {
   controllers: [__dirname + "/controllers/*.js"],
   middlewares: [LoggingMiddleware, CustomErrorHandler],
 });
-app.listen(3000); 
+app.listen(3000);
 
-// 
+//
 class Pagination {
     @IsPositive()
     limit: number;
@@ -246,8 +252,24 @@ currentUserChecker: async (action: Action) => {...}
 import { createParamDecorator } from "routing-controllers";
 
 
-process.on('SIGINT', () => { 
-  // Gracefully 
+process.on('SIGINT', () => {
+  // Gracefully
 }
+
+
+
+migrationsRun: true
+
+
+const limit = request.params.pageSize;
+
+const skip = request.params.pageNo * limit;
+
+const [userListByPage, totalUsersCount] = await this.userRepository.createQueryBuilder(“user”).skip(skip).take(limit).getManyAndCount();
+
+
+.where(`user.address ::jsonb @> \'{"state":"${query.location}"}\'`)
+
+jest --init
 
 ```

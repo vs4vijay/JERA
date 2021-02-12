@@ -1,22 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm';
+import { IsEmail } from 'class-validator';
+import { Entity, Column } from 'typeorm';
+
+import { BaseModel } from './BaseModel';
 
 @Entity()
-export class User {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
+export class User extends BaseModel {
   @Column()
   name: string;
 
-  @Column({ default: true })
-  isActive: boolean;
-
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
-
-  @DeleteDateColumn()
-  deletedAt: Date;
+  @Column()
+  @IsEmail()
+  email: string;
 }

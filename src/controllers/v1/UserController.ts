@@ -1,9 +1,19 @@
-import { JsonController, Param, Get, Post, Body, Put, Delete } from 'routing-controllers';
-import { DeleteResult, UpdateResult } from 'typeorm';
-import { plainToClass, plainToClassFromExist } from 'class-transformer';
+import {
+  JsonController,
+  Param,
+  Get,
+  Post,
+  Body,
+  Put,
+  Delete,
+  QueryParams,
+  HttpCode,
+  NotFoundError,
+} from 'routing-controllers';
 
-import { UserDTO } from '../../dtos';
+import { UserDTO, CreateUserDTO, UpdateUserDTO, ResponseUserDTO, ResponseDTO, PaginationParams } from '../../dtos';
 import { User } from '../../models';
+import { SearchCriteria } from '../../common';
 import { UserService } from '../../services';
 
 @JsonController('/api/v1/users')
@@ -11,32 +21,50 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Get()
-  getAll(): Promise<User[]> {
-    return this.userService.getAll();
+  async getAll(@QueryParams() paginationParams: PaginationParams): Promise<ResponseDTO<Array<ResponseUserDTO>>> {
+    const searchCriteria = SearchCriteria.getSearchCriteriaFromPagination(paginationParams as any);
+    const [users, totalCount] = await this.userService.search(searchCriteria);
+    const usersDTO: Array<ResponseUserDTO> = users.map(UserDTO.fromModel);
+    const responseDTO = new ResponseDTO<Array<ResponseUserDTO>>(usersDTO, totalCount);
+    return responseDTO;
   }
 
   @Get('/:id')
-  get(@Param('id') id: string): Promise<User> {
-    return this.userService.getById(id);
+  async get(@Param('id') id: string): Promise<ResponseDTO<ResponseUserDTO>> {
+    const user = await this.userService.getById(id);
+    if (!user) {
+      return Promise.reject(new NotFoundError('User not found'));
+    }
+    return new ResponseDTO<ResponseUserDTO>(UserDTO.fromModel(user));
   }
 
+  @HttpCode(201)
   @Post()
-  create(@Body({ required: true }) userDTO: UserDTO): Promise<User> {
-    // TODO: Validations and DTO to Model conversion
-    const user = userDTO.toModel();
-    // TODO: Send proper 201 status
-    return this.userService.create(user);
+  async create(@Body({ required: true }) userDTO: CreateUserDTO): Promise<ResponseDTO<ResponseUserDTO>> {
+    let createdUser: User;
+    try {
+      const user = userDTO.toModel();
+      createdUser = await this.userService.create(user);
+
+      return new ResponseDTO<ResponseUserDTO>(UserDTO.fromModel(createdUser));
+    } catch (error) {
+      return Promise.reject(error);
+    }
   }
 
   @Put('/:id')
-  update(@Param('id') id: string, @Body({ required: true }) userDTO: UserDTO): Promise<UpdateResult> {
-    // TODO: Validations and DTO to Model conversion
-    const user = userDTO.toModel();
-    return this.userService.update(id, user);
+  async update(
+    @Param('id') id: string,
+    @Body({ required: true }) userDTO: UpdateUserDTO,
+  ): Promise<ResponseDTO<ResponseUserDTO>> {
+    const user: User = userDTO.toModel();
+    const updatedUser = await this.userService.update(id, user);
+    return new ResponseDTO<ResponseUserDTO>(UserDTO.fromModel(updatedUser));
   }
 
   @Delete('/:id')
-  delete(@Param('id') id: string): Promise<DeleteResult> {
-    return this.userService.delete(id);
+  async delete(@Param('id') id: string): Promise<ResponseDTO<boolean>> {
+    const status = await this.userService.delete(id);
+    return new ResponseDTO<boolean>(status);
   }
 }

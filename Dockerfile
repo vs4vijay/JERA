@@ -17,6 +17,7 @@ RUN npm ci --quiet
 
 # Copy source code
 COPY tsconfig.json ./
+COPY jest.config.js ./
 COPY src /app/src
 
 # Build

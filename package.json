@@ -8,9 +8,11 @@
     "lint:fix": "eslint . --ext .ts --fix",
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js -f src/db.ts",
     "debug": "npm run clean && npm run build && node --inspect-brk dist/app.js",
-    "test": "tsc --version && tsc --pretty && jest",
-    "test:watch": "tsc --version && tsc --pretty && jest --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage --verbose",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js",
+    "test:ci:coverage": "jest --ci --coverage",
     "clean": "rimraf dist/",
     "build": "tsc --project ./tsconfig.json",
     "start": "npm run clean && npm run build && node dist/app.js",
@@ -56,13 +58,14 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.2.0",
-    "oracledb": "^5.0.0",
+    "morgan": "^1.10.0",
     "reflect-metadata": "^0.1.10",
-    "rimraf": "^3.0.2",
     "routing-controllers": "^0.8.1",
+    "sqlite3": "^5.0.1",
     "typedi": "^0.8.0",
     "typeorm": "^0.2.28",
-    "typeorm-typedi-extensions": "^0.2.3"
+    "typeorm-typedi-extensions": "^0.2.3",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.8",
@@ -78,6 +81,8 @@
     "prettier": "^2.1.2",
     "ts-node": "3.3.0",
     "ts-node-dev": "^1.0.0",
-    "typescript": "3.3.3333"
+    "typescript": "3.3.3333",
+    "jest-junit": "^12.0.0",
+    "rimraf": "^3.0.2"
   }
 }

@@ -1,4 +1,4 @@
-# Ignore artifacts:
+# Ignore artifacts
 build
 dist
 coverage

@@ -31,7 +31,6 @@ class App {
 
     // TODO: Add middlewares, etc
     useExpressServer(this.app, {
-      middlewares: [`${__dirname}/middlewares/*.{ts,js}`],
       controllers: [`${__dirname}/controllers/**/*.{ts,js}`],
     });
     createConnection(dbConfig)

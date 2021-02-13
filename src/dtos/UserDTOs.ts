@@ -17,7 +17,7 @@ export class UserDTO {
     const user = new User();
     user.name = this.name;
     user.email = this.email;
-    user.isActive = this.isActive;
+    user.isActive = !!this.isActive;
     return user;
   }
 

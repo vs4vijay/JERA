@@ -20,8 +20,8 @@ export const config = {
   },
   auth: {
     enableAuth: process.env.ENABLE_AUTH === 'true',
-    sessionSecret: process.env.SESSION_SECRET || 'S0meS3cret!@@#DFF',
-    providerUrl: process.env.AUTH_PROVIDER_URL,
+    sessionSecret: process.env.SESSION_SECRET || '4e63541db26f27f5f8e108a5e7ffd278994e932751b83423daa819d17b57a633',
+    issuerUrl: process.env.ISSUER_URL,
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
   },

@@ -6,7 +6,7 @@ import { createConnection, Connection, useContainer as useORMContainer } from 't
 import { Container } from 'typedi';
 
 import dbConfig from './db';
-import { oidc } from './auth';
+import { oidc, oidcRoutes } from './auth';
 import config from './config';
 import { Logger, HttpLogger } from './loggers';
 
@@ -34,7 +34,8 @@ class App {
       }),
     );
 
-    this.app.use(oidc.router);
+    // Add OIDC Routes
+    this.app.use(oidcRoutes);
 
     // Add Static folder
     this.app.use(express.static(`${__dirname}/static`));

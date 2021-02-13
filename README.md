@@ -274,12 +274,22 @@ jest --init
 
 
 Authentication using OIDC
-- Okta (package - @okta/oidc-middleware)
+- Okta
+  - package - @okta/oidc-middleware
+    - Routes - oidc.router
+    - Middleware - oidc.ensureAuthenticated()
+    - Logout - oidc.forceLogoutAndRevoke()
   - Login - https://developer.okta.com/login/
-  - Org URL - dev-04022784.okta.com
+  - Issuer URL - https://dev-04022784.okta.com
   - Client ID - 0oa5xan98da2ngFCf5d6
   - Client Secret -
 - Auth0
+  - package - express-openid-connect
+    - Routes - auth(authConfig)
+    - Middleware - requiresAuth()
   - Login - https://auth0.auth0.com
+  - Issuer URL - https://vs4vijay.auth0.com
+  - Client ID - g2m6mwjswZap6TNKlrCb6isGUvw6D9Sh
+  - Client Secret -
 
 ```

@@ -1,9 +1,9 @@
 import { Req, Res, JsonController, Get, UseBefore } from 'routing-controllers';
 
-import { oidc } from '../../auth';
+import { oidcMiddleware } from '../../auth';
 import { Logger } from '../../loggers';
 
-@UseBefore(oidc.ensureAuthenticated())
+@UseBefore(oidcMiddleware())
 @JsonController('/app')
 export class AppController {
   private logger: Logger;
@@ -14,7 +14,8 @@ export class AppController {
 
   @Get()
   home(@Req() request: any, @Res() response: any): any {
-    this.logger.info('req.userContext', request.userContext);
+    this.logger.info('request.userContext', request.userContext);
+    this.logger.info('request.oidc.isAuthenticated() ' + request.oidc.isAuthenticated(), request.oidc.user);
     // this.logger.info('home', request);
     return 'home';
     // return response.sendFile(__dirname + '../../static/index.html');
@@ -22,7 +23,8 @@ export class AppController {
 
   @Get('/dashboard')
   dashboard(@Req() request: any, @Res() response: any): any {
-    this.logger.info('req.userContext', request.userContext);
-    return request.userContext;
+    this.logger.info('request.userContext', request.userContext);
+    this.logger.info('request.oidc.user', request.oidc.user);
+    return request.userContext || request.oidc.user;
   }
 }

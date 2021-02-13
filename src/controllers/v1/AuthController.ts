@@ -1,4 +1,4 @@
-import { JsonController, Get, Req, UseBefore } from 'routing-controllers';
+import { JsonController, Get, Req, Res, UseBefore } from 'routing-controllers';
 import { oidc } from '../../auth';
 
 import { Logger } from '../../loggers';
@@ -11,6 +11,12 @@ export class AuthController {
     this.logger = Logger.getLogger({ component: 'auth' });
   }
 
+  // @Get('/login')
+  // login(@Req() request: any, @Res() response: any): any {
+  //   this.logger.info('login');
+  //   return response.oidc.login({ returnTo: '/app' });
+  // }
+
   @Get('/callback')
   authCallback(): any {
     this.logger.info('auth callback');
@@ -18,7 +24,7 @@ export class AuthController {
   }
 
   @Get('/logout')
-  @UseBefore(oidc.forceLogoutAndRevoke())
+  // @UseBefore(oidc.forceLogoutAndRevoke())
   logout(@Req() request: any): any {
     this.logger.info('logout');
     return 'logout';

@@ -23,6 +23,6 @@ export class AppController {
   @Get('/dashboard')
   dashboard(@Req() request: any, @Res() response: any): any {
     this.logger.info('req.userContext', request.userContext);
-    return 'dashboard';
+    return request.userContext;
   }
 }

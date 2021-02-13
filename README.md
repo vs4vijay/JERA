@@ -273,10 +273,13 @@ const [userListByPage, totalUsersCount] = await this.userRepository.createQueryB
 jest --init
 
 
-OIDC
-- Okta
-  - dev-04022784.okta.com
+Authentication using OIDC
+- Okta (package - @okta/oidc-middleware)
+  - Login - https://developer.okta.com/login/
+  - Org URL - dev-04022784.okta.com
   - Client ID - 0oa5xan98da2ngFCf5d6
   - Client Secret -
+- Auth0
+  - Login - https://auth0.auth0.com
 
 ```

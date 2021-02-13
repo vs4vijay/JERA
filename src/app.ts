@@ -29,6 +29,8 @@ class App {
       session({
         cookie: { httpOnly: true },
         secret: config.auth.sessionSecret,
+        resave: true,
+        saveUninitialized: false,
       }),
     );
 

@@ -22,6 +22,9 @@ class App {
   }
 
   private async init() {
+    // Add Static folder
+    this.app.use('/', express.static(`${__dirname}/static`));
+
     // Configure HTTP Access Logs using Morgan
     this.app.use(HttpLogger());
 

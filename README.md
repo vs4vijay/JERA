@@ -272,4 +272,11 @@ const [userListByPage, totalUsersCount] = await this.userRepository.createQueryB
 
 jest --init
 
+
+OIDC
+- Okta
+  - dev-04022784.okta.com
+  - Client ID - 0oa5xan98da2ngFCf5d6
+  - Client Secret -
+
 ```

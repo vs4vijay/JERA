@@ -23,7 +23,7 @@ npm install
 npm start
 
 # Run on local machine with watcher
-npm run dev
+npm run start:dev
 ```
 
 ---

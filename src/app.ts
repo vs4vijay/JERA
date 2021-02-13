@@ -1,10 +1,12 @@
 import 'reflect-metadata';
 import * as express from 'express';
+import * as session from 'express-session';
 import { useExpressServer, useContainer as useRoutingContainer } from 'routing-controllers';
 import { createConnection, Connection, useContainer as useORMContainer } from 'typeorm';
 import { Container } from 'typedi';
 
 import dbConfig from './db';
+import { oidc } from './auth';
 import config from './config';
 import { Logger, HttpLogger } from './loggers';
 
@@ -22,8 +24,18 @@ class App {
   }
 
   private async init() {
+    // Add Session Middleware
+    this.app.use(
+      session({
+        cookie: { httpOnly: true },
+        secret: config.auth.sessionSecret,
+      }),
+    );
+
+    this.app.use(oidc.router);
+
     // Add Static folder
-    this.app.use('/', express.static(`${__dirname}/static`));
+    this.app.use(express.static(`${__dirname}/static`));
 
     // Configure HTTP Access Logs using Morgan
     this.app.use(HttpLogger());
@@ -36,6 +48,7 @@ class App {
     useExpressServer(this.app, {
       controllers: [`${__dirname}/controllers/**/*.{ts,js}`],
     });
+
     createConnection(dbConfig)
       .then(
         (_) => _,

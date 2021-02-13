@@ -18,6 +18,13 @@ export const config = {
     synchronize: process.env.DB_SYNCHRONIZE === 'true',
     migrationsRun: process.env.DB_MIGRATIONS_RUN === 'true',
   },
+  auth: {
+    enableAuth: process.env.ENABLE_AUTH === 'true',
+    sessionSecret: process.env.SESSION_SECRET || 'S0meS3cret!@@#DFF',
+    providerUrl: process.env.AUTH_PROVIDER_URL,
+    clientId: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+  },
 };
 
 export default config;

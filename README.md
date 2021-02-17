@@ -291,5 +291,20 @@ Authentication using OIDC
   - Issuer URL - https://vs4vijay.auth0.com
   - Client ID - g2m6mwjswZap6TNKlrCb6isGUvw6D9Sh
   - Client Secret -
+- Playground - https://openidconnect.net/
+- Libraries
+  - https://github.com/panva/node-openid-client
+  - https://github.com/jaredhanson/passport
+- Providers
+  - https://github.com/panva/node-oidc-provider
+  - ORY Hydra - https://github.com/ory/hydra
+  - Keycloak - https://github.com/keycloak/keycloak
+  - https://github.com/dexidp/dex
+  - https://github.com/apereo/cas
+  - Azure AD
+  - Ping Identity
+  - OneLogin
+  - LoginRadius
+  - OpenAM ForgeRock
 
 ```

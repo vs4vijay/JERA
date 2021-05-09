@@ -60,7 +60,7 @@
     "express": "^4.17.1",
     "express-openid-connect": "^2.2.1",
     "express-session": "^1.17.1",
-    "helmet": "^4.4.1",
+    "helmet": "^4.5.0",
     "morgan": "^1.10.0",
     "reflect-metadata": "^0.1.13",
     "routing-controllers": "^0.8.1",

@@ -73,7 +73,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.9",
     "@types/express": "^4.17.11",
-    "@types/jest": "^26.0.20",
+    "@types/jest": "26.0.24",
     "@types/node": "^14.14.27",
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
